@@ -7,6 +7,8 @@ public class TeleporterActivation : BooleanAction
 {
     public OVRInput.Controller controller = OVRInput.Controller.Active;
 
+    [SerializeField] private bool ignoreTouch;
+
     protected OVRInput.Touch touch = OVRInput.Touch.PrimaryThumbstick;
     protected OVRInput.Axis2D axis = OVRInput.Axis2D.PrimaryThumbstick;
     protected float thumbstickDistanceSq = 0.75f * 0.75f;
@@ -16,10 +18,10 @@ public class TeleporterActivation : BooleanAction
     void Update() {
         bool isTumbstickTouched = OVRInput.Get(touch, controller);
         Vector2 thumbstickPos = OVRInput.Get(axis, controller);
-        bool isThumbstickMoved = isTumbstickTouched? thumbstickPos.sqrMagnitude > thumbstickDistanceSq : true;
+        bool isThumbstickMoved = (!isTumbstickTouched && !ignoreTouch) || thumbstickPos.sqrMagnitude > thumbstickDistanceSq;
 
-        bool validThisFrame = isTumbstickTouched && isThumbstickMoved;
-        if (validLastFrame && isTumbstickTouched) {
+        bool validThisFrame = (isTumbstickTouched || ignoreTouch) && isThumbstickMoved;
+        if (validLastFrame && isTumbstickTouched && !ignoreTouch) {
             validThisFrame = true;
         }
 

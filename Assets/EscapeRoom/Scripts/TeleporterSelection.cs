@@ -9,6 +9,8 @@ public class TeleporterSelection : BooleanAction
     public FloatAction extractX;
     public FloatAction extractY;
 
+    [SerializeField] private bool ignoreTouch;
+    
     protected OVRInput.Touch touch = OVRInput.Touch.PrimaryThumbstick;
     protected OVRInput.Axis2D axis = OVRInput.Axis2D.PrimaryThumbstick;
     protected bool wasThumbstickTouched = false;
@@ -18,8 +20,12 @@ public class TeleporterSelection : BooleanAction
         bool isTumbstickTouched = OVRInput.Get(touch, controller);
 
         Vector2 currentThumbstickPos = OVRInput.Get(axis, controller).normalized;
-        if (!isTumbstickTouched || currentThumbstickPos.sqrMagnitude < 0.5f * 0.5f) {
+        if ((!isTumbstickTouched && !ignoreTouch) || currentThumbstickPos.sqrMagnitude < 0.5f * 0.5f) {
             currentThumbstickPos = lastThumbstickPos;
+        }
+        else
+        {
+            isTumbstickTouched = true;
         }
 
         Receive(!isTumbstickTouched && wasThumbstickTouched);
