@@ -57,9 +57,14 @@ namespace OVRTouchSample
 
         private bool m_restoreOnInputAcquired = false;
 
+        private bool m_ignoreFocusLost;
+
         private void Awake()
         {
             m_grabber = GetComponent<OVRGrabber>();
+#if UNITY_EDITOR
+            m_ignoreFocusLost = true;
+#endif
         }
 
         private void Start()
@@ -123,6 +128,8 @@ namespace OVRTouchSample
         // Simple Dash support. Just hide the hands.
         private void OnInputFocusLost()
         {
+            if(m_ignoreFocusLost) return;
+            
             if (gameObject.activeInHierarchy)
             {
                 m_showAfterInputFocusAcquired.Clear();
@@ -144,6 +151,8 @@ namespace OVRTouchSample
 
         private void OnInputFocusAcquired()
         {
+            if(m_ignoreFocusLost) return;
+            
             if (m_restoreOnInputAcquired)
             {
                 for (int i = 0; i < m_showAfterInputFocusAcquired.Count; ++i)
