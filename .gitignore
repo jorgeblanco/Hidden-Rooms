@@ -37,5 +37,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Signatures
+*oculussig*
+
+# Extra
 Assets/MeshBaker/Examples/
 Assets/MeshBaker/docs/
