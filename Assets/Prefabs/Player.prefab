@@ -1767,7 +1767,7 @@ GameObject:
   - component: {fileID: 2229114030730036046}
   - component: {fileID: 4622883954713875527}
   - component: {fileID: 5990704103443034685}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Poke.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2559,7 +2559,7 @@ GameObject:
   - component: {fileID: 1988216740148921522}
   - component: {fileID: 757206619876697558}
   - component: {fileID: 7176147098414606492}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Poke.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
