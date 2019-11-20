@@ -11,6 +11,7 @@ public class ShapeDisplay : MonoBehaviour
     private void Start()
     {
         _shapeCount = shapes.Length;
+        display.sharedMaterial = shapes[_currentShapeIndex];
     }
 
     public void NextShape()

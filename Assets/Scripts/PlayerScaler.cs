@@ -8,8 +8,6 @@ public class PlayerScaler : MonoBehaviour
     public void ScalePlayer(float scale)
     {
         player.localScale = new Vector3(scale, scale, scale);
-        // player.SetGlobalScale(new Vector3(scale, scale, scale));
-        Debug.Log($"Tried to scale to {scale}");
     }
 
     public void ScalePlayerByTransform(TransformData target)
