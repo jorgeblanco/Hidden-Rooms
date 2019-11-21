@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DisplayValidator : MonoBehaviour
 {
     [SerializeField] private MeshRenderer[] displays;
     [SerializeField] private Material[] validShapes;
-
-    private AudioSource _audioSource;
+    [SerializeField] private UnityEvent valid;
 
     private void Start()
     {
         StartCoroutine(ShapeValidator());
-        _audioSource = GetComponent<AudioSource>();
     }
 
     private IEnumerator ShapeValidator()
@@ -39,7 +38,7 @@ public class DisplayValidator : MonoBehaviour
 
     private void OnShapesValid()
     {
-        _audioSource.Play();
+        valid.Invoke();
         Debug.Log("You solved the puzzle!");
     }
 }
