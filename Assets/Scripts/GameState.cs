@@ -5,7 +5,7 @@ public class GameState : MonoBehaviour
 {
     public void Reload()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
     }
     
     public void Quit()
