@@ -108,3 +108,4 @@
 *.bundle filter=lfs diff=lfs merge=lfs -text
 *.dll.old0 filter=lfs diff=lfs merge=lfs -text
 *.dll.disabled filter=lfs diff=lfs merge=lfs -text
+*.dll.old1 filter=lfs diff=lfs merge=lfs -text
